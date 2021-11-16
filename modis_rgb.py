@@ -52,16 +52,16 @@ def read_modis_file(file, nointerp = False):
     
     #Extract each of the bands and apply a scale/offset. Add them to the dictionary.
     for idx, b in enumerate(np.arange(1, 3)):
-        data = ev250[idx, :, :]
-        bands[b] = (data * ev250.reflectance_scales[idx]) + ev250.reflectance_offsets[idx]
+        data1 = ev250[idx, :, :]
+        bands[b] = (data1 * ev250.reflectance_scales[idx]) + ev250.reflectance_offsets[idx]
     
     #This reads in bands 3-7
     ev500 = data.variables['EV_500_Aggr1km_RefSB']
     
     #Extract each of the bands and apply a scale/offset. Add them to the dictionary.
     for idx, b in enumerate(np.arange(3, 8)):
-        data = ev500[idx, :, :]
-        bands[b] = (data * ev500.reflectance_scales[idx]) + ev500.reflectance_offsets[idx]
+        data1 = ev500[idx, :, :]
+        bands[b] = (data1 * ev500.reflectance_scales[idx]) + ev500.reflectance_offsets[idx]
     
     #Read in the lats/lons
     lats = data.variables['Latitude'][:]
